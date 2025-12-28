@@ -105,7 +105,7 @@ Get-Content myfile.txt -Raw | .\New-TextareaUrl.ps1
 3. Encoded as base64url (URL-safe base64)
 4. Appended to the textarea.my URL as a hash fragment
 
-Since all data is in the URL hash, it's never sent to the server—perfect for private notes and sharing.
+Since all data is in the URL hash, it's never sent to the server—perfect for sharing.
 
 ## License
 
