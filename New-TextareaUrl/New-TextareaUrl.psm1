@@ -133,4 +133,4 @@ function New-TextareaUrl {
 }
 
 # Export the function with global scope as requested
-Export-ModuleMember -Function New-TextareaUrl -Cmdlet * -Variable * -Alias *
+Export-ModuleMember -Function New-TextareaUrl
