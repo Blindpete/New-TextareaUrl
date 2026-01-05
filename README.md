@@ -6,7 +6,7 @@
 
 # New-TextareaUrl
 
-A PowerShell script that generates shareable [textarea.my](https://textarea.my) URLs from text input.
+A PowerShell module that generates shareable [textarea.my](https://textarea.my) URLs from text input.
 
 ## What is textarea.my?
 
@@ -17,12 +17,16 @@ A PowerShell script that generates shareable [textarea.my](https://textarea.my) 
 ### From PowerShell Gallery
 
 ```powershell
-Install-Script -Name New-TextareaUrl
+Install-Module -Name New-TextareaUrl
 ```
 
 ### Manual Installation
 
-Download `New-TextareaUrl.ps1` and place it in your preferred scripts directory.
+Clone the repository and import the module:
+
+```powershell
+Import-Module ./New-TextareaUrl
+```
 
 ## Usage
 
@@ -30,7 +34,7 @@ Download `New-TextareaUrl.ps1` and place it in your preferred scripts directory.
 
 ```powershell
 # Generate a shareable URL
-.\New-TextareaUrl.ps1 "Hello, World!"
+New-TextareaUrl "Hello, World!"
 # Output: https://textarea.my/#80jNycnXUQjPL8pJUQQA
 ```
 
@@ -39,7 +43,7 @@ Download `New-TextareaUrl.ps1` and place it in your preferred scripts directory.
 Lines starting with `#` become the page title:
 
 ```powershell
-.\New-TextareaUrl.ps1 "# My Notes`nThis is the content"
+New-TextareaUrl "# My Notes`nThis is the content"
 ```
 
 ### QR Code
@@ -47,7 +51,7 @@ Lines starting with `#` become the page title:
 Generate a URL that displays a QR code:
 
 ```powershell
-.\New-TextareaUrl.ps1 "Hello" -Format qr
+New-TextareaUrl "Hello" -Format qr
 # Output: https://textarea.my/qr#80jNyckHAA
 ```
 
@@ -56,7 +60,7 @@ Generate a URL that displays a QR code:
 Generate a URL that renders Markdown:
 
 ```powershell
-.\New-TextareaUrl.ps1 "# Heading`n**Bold** and *italic*" -Format md
+New-TextareaUrl "# Heading`n**Bold** and *italic*" -Format md
 # Output: https://textarea.my/md#...
 ```
 
@@ -65,7 +69,7 @@ Generate a URL that renders Markdown:
 Automatically open the URL in your default browser:
 
 ```powershell
-.\New-TextareaUrl.ps1 "Hello" -Open
+New-TextareaUrl "Hello" -Open
 ```
 
 ### Custom Domain
@@ -74,11 +78,11 @@ Use a self-hosted instance:
 
 ```powershell
 # Via parameter
-.\New-TextareaUrl.ps1 "Hello" -Domain "mytextarea.example.com"
+New-TextareaUrl "Hello" -Domain "mytextarea.example.com"
 
 # Via environment variable
 $env:TEXTAREA_DOMAIN = "mytextarea.example.com"
-.\New-TextareaUrl.ps1 "Hello"
+New-TextareaUrl "Hello"
 ```
 
 ### Pipeline Input
@@ -86,7 +90,7 @@ $env:TEXTAREA_DOMAIN = "mytextarea.example.com"
 Read from a file:
 
 ```powershell
-Get-Content myfile.txt -Raw | .\New-TextareaUrl.ps1
+Get-Content myfile.txt -Raw | New-TextareaUrl
 ```
 
 ## Parameters
